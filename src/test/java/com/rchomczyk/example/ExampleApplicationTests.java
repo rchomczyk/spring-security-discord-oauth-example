@@ -16,6 +16,6 @@ class ExampleApplicationTests {
 
 	@Test
 	void validateIfContextLoadedAllBeanDefinitions(ApplicationContext context) {
-		assertThat(context.getBeanDefinitionCount()).isEqualTo(226);
+		assertThat(context.getBeanDefinitionCount()).isEqualTo(254);
 	}
 }
