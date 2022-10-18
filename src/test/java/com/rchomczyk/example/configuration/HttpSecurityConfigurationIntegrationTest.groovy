@@ -7,15 +7,16 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.security.test.context.support.WithAnonymousUser
 import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+
+import static com.rchomczyk.example.ExampleApplicationTestData.RESOURCE_BINDING_PATH
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @AutoConfigureMockMvc
 @SpringBootTest
 class HttpSecurityConfigurationIntegrationTest {
 
-	private static final String RESOURCE_BINDING_PATH = "/public"
 	private static final String EXAMPLE_RESOURCE_ORIGIN_PATH = "/index.css"
 	private static final String EXAMPLE_RESOURCE_REMOTE_PATH = RESOURCE_BINDING_PATH + EXAMPLE_RESOURCE_ORIGIN_PATH
 
@@ -44,8 +45,8 @@ class HttpSecurityConfigurationIntegrationTest {
 	}
 
 	private void 'call resource and expect status code equal to 200'() {
-		mockMvc.perform(MockMvcRequestBuilders.get(EXAMPLE_RESOURCE_REMOTE_PATH))
-			.andDo(MockMvcResultHandlers.print())
-			.andExpect(MockMvcResultMatchers.status().isOk())
+		mockMvc.perform(get(EXAMPLE_RESOURCE_REMOTE_PATH))
+			.andDo(print())
+			.andExpect(status().isOk())
 	}
 }

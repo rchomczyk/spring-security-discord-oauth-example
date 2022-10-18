@@ -15,6 +15,9 @@
 
 	<properties>
 		<java.version>17</java.version>
+		<path.resources.project.resources>${project.basedir}/src/main/resources</path.resources.project.resources>
+		<path.resources.openapi.origin>${path.resources.project.resources}/openapi</path.resources.openapi.origin>
+		<path.resources.openapi.remote>${path.resources.project.resources}/static/openapi</path.resources.openapi.remote>
 	</properties>
 
 	<dependencies>
@@ -85,6 +88,36 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<version>1.12.1</version>
+				<executions>
+					<execution>
+						<id>Install node and pnpm</id>
+						<goals>
+							<goal>install-node-and-npm</goal>
+						</goals>
+						<configuration>
+							<nodeVersion>v18.11.0</nodeVersion>
+							<npmVersion>8.19.2</npmVersion>
+						</configuration>
+					</execution>
+					<execution>
+						<id>Bundle openapi definitions</id>
+						<goals>
+							<goal>npx</goal>
+						</goals>
+						<configuration>
+							<!--suppress UnresolvedMavenProperty -->
+							<arguments>@redocly/cli@latest bundle ${path.resources.openapi.origin}/schema.yml
+												 ${path.resources.openapi.origin}/definitions/* --output
+												 ${path.resources.openapi.remote}/schema.yml
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 		<resources>
