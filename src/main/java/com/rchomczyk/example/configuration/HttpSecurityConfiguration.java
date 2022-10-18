@@ -12,6 +12,8 @@ public class HttpSecurityConfiguration {
 	public SecurityFilterChain configureSecurityFilterChain(HttpSecurity httpSecurity)
 		throws Exception {
 		httpSecurity.authorizeRequests()
+			.antMatchers("/public/*")
+			.permitAll()
 			.anyRequest()
 			.authenticated()
 			.and()
