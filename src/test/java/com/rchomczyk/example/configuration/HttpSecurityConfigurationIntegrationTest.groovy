@@ -46,6 +46,6 @@ class HttpSecurityConfigurationIntegrationTest {
 	private void 'call resource and expect status code equal to 200'() {
 		mockMvc.perform(MockMvcRequestBuilders.get(EXAMPLE_RESOURCE_REMOTE_PATH))
 			.andDo(MockMvcResultHandlers.print())
-			.andExpect(MockMvcResultMatchers.status().isOk());
+			.andExpect(MockMvcResultMatchers.status().isOk())
 	}
 }
