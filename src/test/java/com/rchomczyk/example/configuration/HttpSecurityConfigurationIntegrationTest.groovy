@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 class HttpSecurityConfigurationIntegrationTest {
 
-	private static final String EXAMPLE_RESOURCE_ORIGIN_PATH = "/index.css"
+	private static final String EXAMPLE_RESOURCE_ORIGIN_PATH = "/dist/stylesheets/index.css"
 	private static final String EXAMPLE_RESOURCE_REMOTE_PATH = RESOURCE_BINDING_PATH + EXAMPLE_RESOURCE_ORIGIN_PATH
 
 	private final MockMvc mockMvc
