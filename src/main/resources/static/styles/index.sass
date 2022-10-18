@@ -1,0 +1,36 @@
+html, body
+	height: 100%
+	margin: 0
+	padding: 0
+
+body
+	display: flex
+	flex-direction: column
+
+.app-content
+	flex: 1 0 auto
+
+$app-content-child-content-alignment: center
+
+.app-content-child
+	height: 90%
+	display: flex
+	align-items: #{$app-content-child-content-alignment}
+	justify-content: #{$app-content-child-content-alignment}
+
+$greeting-card-content-alignment: center
+
+.greeting-card
+	text-align: #{$greeting-card-content-alignment}
+
+.greeting-subject
+	font-weight: bold
+
+.greeting-subject-avatar
+	border-radius: 24px
+
+.footer, .navbar
+	height: 5%
+
+.footer
+	flex-shrink: 0

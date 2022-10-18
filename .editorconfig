@@ -16,6 +16,9 @@ indent_size = 2
 ij_xml_align_text = true
 ij_xml_align_attributes = true
 
+[*.sass]
+indent_size = 2
+
 [*.jte]
 ij_html_indent_size = 2
 ij_html_align_text = true
