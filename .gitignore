@@ -5,3 +5,12 @@ target
 target/**
 
 *.iml
+
+jte-classes/
+jte-classes/**
+
+node/
+node/**
+
+src/main/resources/static/openapi/
+src/main/resources/static/openapi/**
