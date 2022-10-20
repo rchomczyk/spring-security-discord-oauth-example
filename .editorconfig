@@ -1,3 +1,5 @@
+root = true
+
 [*]
 charset = utf-8
 indent_size = 4
@@ -9,15 +11,12 @@ ij_continuation_indent_size = 4
 ij_java_names_count_to_use_import_on_demand = 999
 ij_java_class_count_to_use_import_on_demand = 999
 
-[{*.xml, *.yml, *.jte}]
+[{*.xml, *.yml, *.jte, *.sass}]
 indent_size = 2
 
 [*.xml]
 ij_xml_align_text = true
 ij_xml_align_attributes = true
-
-[*.sass]
-indent_size = 2
 
 [*.jte]
 ij_html_indent_size = 2
