@@ -22,9 +22,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.33</version>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -55,8 +54,8 @@
 		</dependency>
 		<dependency>
 			<groupId>gg.jte</groupId>
-			<artifactId>jte-spring-boot-starter</artifactId>
-			<version>2.2.4</version>
+			<artifactId>jte-spring-boot-starter-3</artifactId>
+			<version>2.3.2</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -72,10 +71,9 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>2.0.1.Final</version>
-			<scope>compile</scope>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -108,6 +106,7 @@
 				<executions>
 					<execution>
 						<id>Install node and pnpm</id>
+						<phase>validate</phase>
 						<goals>
 							<goal>install-node-and-npm</goal>
 						</goals>
@@ -118,6 +117,7 @@
 					</execution>
 					<execution>
 						<id>Compile sass files</id>
+						<phase>validate</phase>
 						<goals>
 							<goal>npx</goal>
 						</goals>
@@ -129,6 +129,7 @@
 					</execution>
 					<execution>
 						<id>Bundle openapi definitions</id>
+						<phase>validate</phase>
 						<goals>
 							<goal>npx</goal>
 						</goals>
@@ -158,7 +159,7 @@
 							<configOptions>
 								<sourceFolder>src/gen/java/main</sourceFolder>
 								<interfaceOnly>true</interfaceOnly>
-								<useSpringBoot3>false</useSpringBoot3>
+								<useSpringBoot3>true</useSpringBoot3>
 								<useSpringController>true</useSpringController>
 								<useTags>true</useTags>
 							</configOptions>
@@ -173,6 +174,10 @@
 			</plugin>
 		</plugins>
 		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
 			<resource>
 				<directory>src/main/jte</directory>
 				<filtering>true</filtering>

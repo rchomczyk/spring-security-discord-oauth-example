@@ -1,4 +1,4 @@
-package com.rchomczyk.example
+package moe.rafal.example
 
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -8,7 +8,7 @@ import org.springframework.security.test.context.support.WithAnonymousUser
 import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.web.servlet.MockMvc
 
-import static com.rchomczyk.example.ExampleApplicationTestData.RESOURCE_BINDING_PATH
+import static ExampleApplicationTestData.RESOURCE_BINDING_PATH
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status

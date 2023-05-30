@@ -1,4 +1,4 @@
-package com.rchomczyk.example
+package moe.rafal.example
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat
 @SpringBootTest
 class ExampleApplicationTest {
 
-	private static final int EXPECTED_BEAN_DEFINITIONS_COUNT = 422
+	private static final int EXPECTED_BEAN_DEFINITIONS_COUNT = 266
 
 	@Test
 	void 'validate if context loads'(ApplicationContext context) {
