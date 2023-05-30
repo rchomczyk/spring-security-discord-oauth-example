@@ -11,7 +11,7 @@ ij_continuation_indent_size = 4
 ij_java_names_count_to_use_import_on_demand = 999
 ij_java_class_count_to_use_import_on_demand = 999
 
-[{*.xml, *.yml, *.jte, *.sass}]
+[{*.xml,*.yaml,*.yml,*.jte,*.sass}]
 indent_size = 2
 
 [*.xml]

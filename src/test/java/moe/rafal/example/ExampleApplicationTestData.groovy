@@ -1,4 +1,4 @@
-package com.rchomczyk.example
+package moe.rafal.example
 
 final class ExampleApplicationTestData {
 
