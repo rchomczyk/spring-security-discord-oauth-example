@@ -1,10 +1,8 @@
-package com.rchomczyk.example;
+package moe.rafal.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHttpSession;
 
-@EnableJdbcHttpSession
 @SpringBootApplication
 public class ExampleApplication {
 
