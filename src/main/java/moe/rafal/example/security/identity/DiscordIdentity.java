@@ -17,6 +17,15 @@ public record DiscordIdentity(long id,
 							  @Nonnull String email,
 							  @Nullable String avatar) implements OAuth2User, Serializable {
 
+	public DiscordIdentity(Map<String, Object> attributes) {
+		this(Long.parseLong(
+			attributes.get("id").toString()),
+			attributes.get("username").toString(),
+			attributes.get("discriminator").toString(),
+			attributes.get("email").toString(),
+			attributes.get("avatar").toString());
+	}
+
 	@Override
 	public String getName() {
 		return username;

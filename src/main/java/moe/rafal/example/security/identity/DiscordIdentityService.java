@@ -1,5 +1,6 @@
 package moe.rafal.example.security.identity;
 
+import jakarta.annotation.Nonnull;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -28,24 +29,21 @@ public class DiscordIdentityService implements OAuth2UserService<OAuth2UserReque
 
 		HttpEntity<?> entity = new HttpEntity<>(httpHeaders);
 
-		ResponseEntity<Map<String, Object>> response = restTemplate.exchange(
+		ResponseEntity<Map<String, Object>> response = exchangeAttributes(
 			userRequest.getClientRegistration().getProviderDetails().getUserInfoEndpoint().getUri(),
-			HttpMethod.GET,
-			entity,
-			new ParameterizedTypeReference<>() {
-
-			});
+			entity);
 
 		Map<String, Object> attributes = response.getBody();
 		if (attributes != null) {
-			return new DiscordIdentity(
-				Long.parseLong(attributes.get("id").toString()),
-				attributes.get("username").toString(),
-				attributes.get("discriminator").toString(),
-				attributes.get("email").toString(),
-				attributes.get("avatar").toString());
+			return new DiscordIdentity(attributes);
 		}
 
 		return null;
+	}
+
+	private ResponseEntity<Map<String, Object>> exchangeAttributes(@Nonnull String uri, @Nonnull HttpEntity<?> entity) {
+		return restTemplate.exchange(uri, HttpMethod.GET, entity, new ParameterizedTypeReference<>() {
+
+		});
 	}
 }
