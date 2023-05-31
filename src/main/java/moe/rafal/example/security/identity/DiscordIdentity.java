@@ -1,44 +1,29 @@
 package moe.rafal.example.security.identity;
 
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
+import com.rchomczyk.example.model.DiscordIdentityDto;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public record DiscordIdentity(long id,
-							  @Nonnull String username,
-							  @Nonnull String discriminator,
-							  @Nonnull String email,
-							  @Nullable String avatar) implements OAuth2User, Serializable {
-
-	public DiscordIdentity(Map<String, Object> attributes) {
-		this(Long.parseLong(
-			attributes.get("id").toString()),
-			attributes.get("username").toString(),
-			attributes.get("discriminator").toString(),
-			attributes.get("email").toString(),
-			attributes.get("avatar").toString());
-	}
+public class DiscordIdentity extends DiscordIdentityDto implements OAuth2User {
 
 	@Override
 	public String getName() {
-		return username;
+		return getUsername();
 	}
 
 	@Override
 	public Map<String, Object> getAttributes() {
 		Map<String, Object> attributes = new HashMap<>();
-		attributes.put("id", id);
-		attributes.put("username", username);
-		attributes.put("discriminator", discriminator);
-		attributes.put("email", email);
-		attributes.put("avatar", avatar);
+		attributes.put("id", getId());
+		attributes.put("username", getUsername());
+		attributes.put("discriminator", getDiscriminator());
+		attributes.put("email", getEmail());
+		attributes.put("avatar", getAvatar());
 		return attributes;
 	}
 

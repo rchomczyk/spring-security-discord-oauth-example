@@ -71,6 +71,36 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.openapitools</groupId>
+			<artifactId>jackson-databind-nullable</artifactId>
+			<version>0.2.6</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.validation</groupId>
+			<artifactId>jakarta.validation-api</artifactId>
+			<version>3.0.2</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.swagger.core.v3</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>2.2.10</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>8.0.0.Final</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>1.5.5.Final</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>test</scope>
@@ -95,6 +125,22 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.11.0</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>1.5.5.Final</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -123,21 +169,7 @@
 						</goals>
 						<configuration>
 							<arguments>sass@latest
-												 ${path.resources.project.resources}/static/styles:${path.resources.project.resources}/static/dist/stylesheets
-							</arguments>
-						</configuration>
-					</execution>
-					<execution>
-						<id>Bundle openapi definitions</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>npx</goal>
-						</goals>
-						<configuration>
-							<!--suppress UnresolvedMavenProperty -->
-							<arguments>@redocly/cli@latest bundle ${path.resources.openapi.origin}/schema.yml
-												 ${path.resources.openapi.origin}/definitions/* --output
-												 ${path.resources.openapi.remote}/schema.yml
+												 ${path.resources.project.resources}/static/styles:${path.resources.project.resources}/static/dist/styles
 							</arguments>
 						</configuration>
 					</execution>
@@ -154,7 +186,7 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<inputSpec>${path.resources.openapi.remote}/schema.yml</inputSpec>
+							<inputSpec>${path.resources.openapi.origin}/schema.yml</inputSpec>
 							<generatorName>spring</generatorName>
 							<configOptions>
 								<sourceFolder>src/gen/java/main</sourceFolder>

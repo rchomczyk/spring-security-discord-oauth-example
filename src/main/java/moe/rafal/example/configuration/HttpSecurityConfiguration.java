@@ -1,6 +1,5 @@
 package moe.rafal.example.configuration;
 
-import moe.rafal.example.security.identity.DiscordIdentityService;
 import moe.rafal.example.security.pkce.CustomAuthorizationRequestResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,7 +13,6 @@ import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.client.RestTemplate;
 
 import static org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.DEFAULT_AUTHORIZATION_REQUEST_BASE_URI;
 
@@ -43,10 +41,5 @@ public class HttpSecurityConfiguration {
 				.userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint.userService(discordIdentityService)))
 			.logout(LogoutConfigurer::permitAll)
 			.build();
-	}
-
-	@Bean
-	public OAuth2UserService<OAuth2UserRequest, OAuth2User> configureDiscordIdentityService(RestTemplate restTemplate) {
-		return new DiscordIdentityService(restTemplate);
 	}
 }

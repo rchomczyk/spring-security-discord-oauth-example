@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat
 @SpringBootTest
 class ExampleApplicationTest {
 
-	private static final int EXPECTED_BEAN_DEFINITIONS_COUNT = 266
+	private static final int EXPECTED_BEAN_DEFINITIONS_COUNT = 270
 
 	@Test
 	void 'validate if context loads'(ApplicationContext context) {
