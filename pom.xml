@@ -9,9 +9,9 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>com.rchomczyk</groupId>
+	<groupId>moe.rafal</groupId>
 	<artifactId>spring-security-discord-oauth-example</artifactId>
-	<version>0.0.1</version>
+	<version>1.0.0</version>
 
 	<properties>
 		<java.version>17</java.version>
