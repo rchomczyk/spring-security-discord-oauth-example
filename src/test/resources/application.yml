@@ -27,7 +27,7 @@ spring:
       client:
         registration:
           discord:
-            redirect-uri: ${baseUrl}/login/oauth2/code/discord
+            redirect-uri: "{baseUrl}/login/oauth2/code/discord"
             authorization-grant-type: authorization_code
             client-id: ${OAUTH_DISCORD_CLIENT_ID}
             client-name: ${OAUTH_DISCORD_CLIENT_NAME}
