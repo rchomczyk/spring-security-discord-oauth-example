@@ -1,0 +1,42 @@
+server:
+  port: 7000
+
+spring:
+  mvc:
+    static-path-pattern: /public/**
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ''
+    url: jdbc:h2:mem:development;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MYSQL
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+  session:
+    store-type: jdbc
+    jdbc:
+      initialize-schema: embedded
+
+  security:
+    oauth2:
+      client:
+        registration:
+          discord:
+            redirect-uri: ${baseUrl}/login/oauth2/code/discord
+            authorization-grant-type: authorization_code
+            client-id: ${OAUTH_DISCORD_CLIENT_ID}
+            client-name: ${OAUTH_DISCORD_CLIENT_NAME}
+            client-secret: ${OAUTH_DISCORD_CLIENT_SECRET}
+            client-authentication-method: POST
+            scope: [ identify, email ]
+        provider:
+          discord:
+            authorization-uri: https://discord.com/oauth2/authorize
+            token-uri: https://discord.com/api/oauth2/token
+            user-info-uri: https://discordapp.com/api/users/@me
+            user-name-attribute: username
