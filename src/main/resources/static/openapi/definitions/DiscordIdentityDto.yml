@@ -1,0 +1,15 @@
+DiscordIdentityDto:
+  type: object
+  properties:
+    id:
+      type: integer
+      format: int64
+    username:
+      type: string
+    discriminator:
+      type: string
+    email:
+      type: string
+    avatar:
+      type: string
+  x-implements: [ "java.io.Serializable" ]

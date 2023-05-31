@@ -12,9 +12,6 @@ jte-classes/**
 node/
 node/**
 
-src/main/resources/static/openapi/
-src/main/resources/static/openapi/**
-
 src/main/resources/static/dist/
 src/main/resources/static/dist/**
 

@@ -1,0 +1,25 @@
+openapi: "3.0.0"
+
+info:
+  title: "spring-security-discord-oauth-example"
+  version: "0.0.1"
+
+servers:
+  - url: "http://127.0.0.1:7000/"
+
+paths:
+  /session/identity:
+    summary: Resolves identity from active session
+    description: >
+      This resource represents an individual identity in the system.
+      Each user is identified by a numeric `id`.
+    get:
+      tags: [ session ]
+      operationId: getIdentity
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "./definitions/DiscordIdentityDto.yml#/DiscordIdentityDto"
